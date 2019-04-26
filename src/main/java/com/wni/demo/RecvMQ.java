@@ -10,11 +10,11 @@ import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
 public class RecvMQ {
-    private final static String QUEUE_NAME = "myqueue2";
+    private final static String QUEUE_NAME = "myqueue11";
 
     public static void main(String[] args) throws IOException, Exception {
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("dev.feikongbao.cn");
+        factory.setHost("devapp.feikongbao.cn");
         factory.setPort(5672);
         factory.setUsername("root");
         factory.setPassword("Yodoo1sfaraway");
