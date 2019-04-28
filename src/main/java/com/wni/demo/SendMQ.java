@@ -22,8 +22,8 @@ public class SendMQ {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("dev.feikongbao.cn");
         factory.setPort(5672); //默认端口号
-        factory.setUsername("root");//默认用户名
-        factory.setPassword("Yodoo1sfaraway");//默认密码
+        factory.setUsername("dev");//默认用户名
+        factory.setPassword("yodoo123");//默认密码
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
         // 接下来，我们创建一个channel，绝大部分API方法需要通过调用它来完成。
