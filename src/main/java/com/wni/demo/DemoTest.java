@@ -1,6 +1,7 @@
 package com.wni.demo;
 
 import org.openstack4j.api.OSClient;
+import org.openstack4j.api.identity.v3.UserService;
 import org.openstack4j.model.common.Identifier;
 import org.openstack4j.model.identity.v3.User;
 import org.openstack4j.openstack.OSFactory;
@@ -37,7 +38,14 @@ public class DemoTest {
         System.out.println("token:" + os.getToken());
 
         // 用户列表
-        List<? extends User> users = os.identity().users().list();
+        //List<? extends User> users = os.identity().users().list();
+        org.openstack4j.api.identity.v3.IdentityService  mycli = os.identity();
+
+        UserService mysev = mycli.users();
+
+        List<? extends User> users = mysev.list();
+
+
         if (!CollectionUtils.isEmpty(users)) {
             for (User user : users) {
                 System.out.println(user.getName());
