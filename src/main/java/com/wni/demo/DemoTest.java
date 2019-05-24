@@ -17,12 +17,14 @@ public class DemoTest {
     public static String userName = "admin";
 
     // 密码
-    public static String password = "b3d5b75532a84b90";
+    public static String password = "ADMIN_PASS";
 
     // openstack 对外地址
-    public static String endpointUrl = "http://openstack.feikongbao.cn:5000/v3";
+    //public static String endpointUrl = "http://openstack.feikongbao.cn:5000/v3";
+    public static String endpointUrl = "http://dev.feikongbao.cn:5000/v3";
 
     // 域
+    //public static String domainName = "default";
     public static String domainName = "default";
 
     // 租户
