@@ -1,4 +1,4 @@
-﻿package com.wni.demo;
+package com.wni.demo;
 
 import org.openstack4j.api.OSClient;
 import org.openstack4j.api.identity.v3.UserService;
@@ -9,10 +9,9 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 /**
- * Created by niwei on 2019/5/13.
+ * Created by niwei on 2019/7/22.
  */
-public class SwiftTest {
-
+public class SwiftDemoTest {
     // 用户名
     public static String userName = "admin";
 
@@ -61,13 +60,14 @@ public class SwiftTest {
     public static OSClient.OSClientV3 conOpenStack() {
 
         OSClient.OSClientV3 os = OSFactory.builderV3()
-                .endpoint(endpointUrl)
-                .credentials(userName, password, Identifier.byId(domainName))
-                .scopeToProject(Identifier.byName(projectName), Identifier.byId(domainName))
-                .authenticate();
+            .endpoint(endpointUrl)
+            .credentials(userName, password, Identifier.byId(domainName))
+            .scopeToProject(Identifier.byName(projectName), Identifier.byId(domainName))
+            .authenticate();
 
 
         return os;
 
     }
+
 }
