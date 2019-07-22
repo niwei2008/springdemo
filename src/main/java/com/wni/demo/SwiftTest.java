@@ -1,4 +1,4 @@
-package com.wni.demo;
+﻿package com.wni.demo;
 
 import org.openstack4j.api.OSClient;
 import org.openstack4j.api.identity.v3.UserService;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by niwei on 2019/5/13.
  */
-public class DemoTest {
+public class SwiftTest {
 
     // 用户名
     public static String userName = "admin";
@@ -21,7 +21,7 @@ public class DemoTest {
 
     // openstack 对外地址
     //public static String endpointUrl = "http://openstack.feikongbao.cn:5000/v3";
-    public static String endpointUrl = "http://dev.feikongbao.cn:5000/v3";
+    public static String endpointUrl = "http://fat.feikongbao.cn:5000/v3";
 
     // 域
     //public static String domainName = "default";
