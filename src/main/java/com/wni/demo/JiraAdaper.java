@@ -16,15 +16,16 @@ import java.util.Map;
 public class JiraAdaper {
     @RequestMapping("/jira/{name}")
     @ResponseBody
-    public String index(HttpServletRequest request, @PathVariable String name, @RequestParam int issue_id,  @RequestParam String issue_key, @RequestBody
-    Map o){
+    public String index(HttpServletRequest request, @PathVariable String name, @RequestParam int issue_id,  @RequestParam String issue_key
+//        , @RequestBody Map o
+    ){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(auth.getName() + " : "+auth.isAuthenticated());
-        if (null != o ){
-            System.out.println(o.toString());
-        }
+//        if (null != o ){
+//            System.out.println(o.toString());
+//        }
 
-        //getJSONParam(request);
+        getJSONParam(request);
 
         if(null==name){
             name="jira";
@@ -50,7 +51,7 @@ public class JiraAdaper {
                 sb.append(line);
             }
             jsonParam = sb.toString();
-            System.out.println(jsonParam);
+            System.out.println("jsonParam:"+jsonParam);
         } catch (Exception e) {
             e.printStackTrace();
         }
