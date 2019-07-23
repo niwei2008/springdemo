@@ -5,6 +5,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Map;
 
 /**
@@ -22,6 +24,8 @@ public class JiraAdaper {
             System.out.println(o.toString());
         }
 
+        //getJSONParam(request);
+
         if(null==name){
             name="jira";
         }
@@ -32,4 +36,24 @@ public class JiraAdaper {
         return result;
     }
 
+
+    public String getJSONParam(HttpServletRequest request){
+        String jsonParam = null;
+        try {
+            // 获取输入流
+            BufferedReader streamReader = new BufferedReader(new InputStreamReader(request.getInputStream(), "UTF-8"));
+
+            // 数据写入Stringbuilder
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+            while ((line = streamReader.readLine()) != null) {
+                sb.append(line);
+            }
+            jsonParam = sb.toString();
+            System.out.println(jsonParam);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonParam;
+    }
 }
