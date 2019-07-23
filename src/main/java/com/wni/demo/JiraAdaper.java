@@ -15,7 +15,7 @@ public class JiraAdaper {
     @ResponseBody
     public String index(HttpServletRequest request, @PathVariable String name, @RequestParam int issue_id,  @RequestParam String issue_key){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth.getName());
+        System.out.println(auth.getName() + " : "+auth.isAuthenticated());
 
         if(null==name){
             name="jira";
