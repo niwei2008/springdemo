@@ -5,6 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * Created by niwei on 2019/7/22.
@@ -13,9 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 public class JiraAdaper {
     @RequestMapping("/jira/{name}")
     @ResponseBody
-    public String index(HttpServletRequest request, @PathVariable String name, @RequestParam int issue_id,  @RequestParam String issue_key){
+    public String index(HttpServletRequest request, @PathVariable String name, @RequestParam int issue_id,  @RequestParam String issue_key, @RequestBody
+    Map o){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(auth.getName() + " : "+auth.isAuthenticated());
+        if (null != o ){
+            System.out.println(o.toString());
+        }
 
         if(null==name){
             name="jira";
