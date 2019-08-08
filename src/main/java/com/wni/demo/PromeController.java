@@ -18,7 +18,6 @@ public class PromeController {
 
     static Counter counter = null;
 
-    static AtomicInteger atomicInteger = null;
     static Gauge gauge =null;
 
     static {
@@ -28,7 +27,7 @@ public class PromeController {
             .register(new SimpleMeterRegistry());
         counter = Metrics.counter("eureka.myspringboot.http.requests", "uri", "/api/users");
 
-        atomicInteger = new AtomicInteger(3);
+        AtomicInteger atomicInteger = new AtomicInteger(3);
         gauge = Gauge.builder("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get)
             .tag("gaugetag1", "gaugetag2")
             .description("gauge")
@@ -51,7 +50,10 @@ public class PromeController {
         String result = "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure();
         System.out.println(result);
 
+        AtomicInteger atomicInteger = new AtomicInteger( (int)gauge.value());
         atomicInteger.addAndGet(5);
+        Metrics.gauge("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get);
+
         result = "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure();
         System.out.println(result);
         return result;
