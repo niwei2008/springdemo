@@ -16,12 +16,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class HelloWorldController {
 
-    private static PrometheusMeterRegistry registry = null;
+    //private static PrometheusMeterRegistry registry = null;
+
+    static AtomicInteger atomicInteger = null;
+    static Gauge gauge =null;
 
     static {
 
 
-        registry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
+        //registry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
 
         Counter counter = Counter.builder("http.requests")
             .tag("uri", "/api/users")
@@ -34,7 +37,15 @@ public class HelloWorldController {
 
 //        Metrics.addRegistry(new SimpleMeterRegistry());
 
-//        AtomicInteger atomicInteger = new AtomicInteger();
+        atomicInteger = new AtomicInteger();
+         gauge = Gauge.builder("mygauge", atomicInteger, AtomicInteger::get)
+            .tag("gaugetag1", "gaugetag2")
+            .description("gauge")
+            .register(new SimpleMeterRegistry());
+
+
+
+        //        AtomicInteger atomicInteger = new AtomicInteger();
 //        Gauge gauge = Gauge.builder("gauge", atomicInteger, AtomicInteger::get)
 //            .tag("gauge", "gauge")
 //            .description("gauge")
@@ -66,17 +77,14 @@ public class HelloWorldController {
 //        n.set(1);
 //        n.set(2);
 
-        AtomicInteger atomicInteger = new AtomicInteger();
-        Gauge gauge = Gauge.builder("gauge", atomicInteger, AtomicInteger::get)
-            .tag("gauge", "gauge")
-            .description("gauge")
-            .register(new SimpleMeterRegistry());
+
         atomicInteger.addAndGet(5);
         System.out.println(gauge.value());
         System.out.println(gauge.measure());
         atomicInteger.decrementAndGet();
         System.out.println(gauge.value());
         System.out.println(gauge.measure());
+        Metrics.addRegistry(new SimpleMeterRegistry());
         AtomicInteger data = Metrics.gauge("gauge", atomicInteger, AtomicInteger::get);
 
         return "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure() +", data:"+ data;
