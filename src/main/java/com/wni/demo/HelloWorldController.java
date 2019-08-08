@@ -27,6 +27,11 @@ public class HelloWorldController {
             .tag("uri", "/api/users")
             .description("counter")
             .register(new SimpleMeterRegistry());
+        Counter.builder("http.requests2")
+            .tag("uri", "/api/users2")
+            .description("counter")
+            .register(new SimpleMeterRegistry());
+
 //        Metrics.addRegistry(new SimpleMeterRegistry());
 
 //        AtomicInteger atomicInteger = new AtomicInteger();
@@ -48,6 +53,10 @@ public class HelloWorldController {
         counter.increment(3);
         System.out.println(counter.count());
         System.out.println(counter.measure());
+
+        Counter counter2 = Metrics.counter("http.requests2", "uri", "/api/users2");
+        counter2.increment();
+
         return "counter.count："+ counter.count() +", counter.measure："+counter.measure();
     }
     @RequestMapping("/gauge")
