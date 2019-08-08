@@ -84,7 +84,8 @@ public class HelloWorldController {
         atomicInteger.decrementAndGet();
         System.out.println(gauge.value());
         System.out.println(gauge.measure());
-        Metrics.addRegistry(new SimpleMeterRegistry());
+
+        //Metrics.addRegistry(new SimpleMeterRegistry());
         AtomicInteger data = Metrics.gauge("gauge", atomicInteger, AtomicInteger::get);
 
         return "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure() +", data:"+ data;
@@ -99,15 +100,6 @@ public class HelloWorldController {
         if(null==name){
             name="boy";
         }
-        //tag必须成对出现，也就是偶数个
-
-        Counter counter = Metrics.counter("counter", "counter", "counter");
-        counter.increment();
-        counter.increment(2D);
-        counter.increment(3);
-        System.out.println(counter.count());
-        System.out.println(counter.measure());
-        //全局静态方法
 
         return "hello world     name:" +name+"    para1:"+ para1 +"    para2:"+ para2;
     }
