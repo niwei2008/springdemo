@@ -41,7 +41,7 @@ public class HelloWorldController {
 //        Metrics.addRegistry(new SimpleMeterRegistry());
 
          atomicInteger = new AtomicInteger();
-         gauge = Gauge.builder("mygauge", atomicInteger, AtomicInteger::get)
+         gauge = Gauge.builder("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get)
             .tag("gaugetag1", "gaugetag2")
             .description("gauge")
             .register(new SimpleMeterRegistry());
@@ -89,7 +89,7 @@ public class HelloWorldController {
         System.out.println(gauge.measure());
 
         //Metrics.addRegistry(new SimpleMeterRegistry());
-        AtomicInteger data = Metrics.gauge("mygauge", atomicInteger, AtomicInteger::get);
+        AtomicInteger data = Metrics.gauge("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get);
 
         return "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure() +", data:"+ data;
 
