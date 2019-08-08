@@ -27,10 +27,11 @@ public class HelloWorldController {
 
         //registry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
 
-         Counter counter = Counter.builder("http.requests")
+        Counter.builder("http.requests")
             .tag("uri", "/api/users")
             .description("counter")
             .register(new SimpleMeterRegistry());
+        counter = Metrics.counter("http.requests", "uri", "/api/users");
 
          Counter.builder("http.requests2")
             .tag("uri", "/api/users2")
