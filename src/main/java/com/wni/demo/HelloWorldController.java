@@ -11,6 +11,14 @@ import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 @RestController
 public class HelloWorldController {
 
+    static {
+        Counter counter = Counter.builder("counter")
+            .tag("counter", "counter")
+            .description("counter")
+            .register(new SimpleMeterRegistry());
+        Metrics.addRegistry(new SimpleMeterRegistry());
+    }
+
     @RequestMapping("/index/{name}")
     @ResponseBody
     public String index(@PathVariable String name, @RequestParam int para1,  @RequestParam int para2){
@@ -19,22 +27,14 @@ public class HelloWorldController {
             name="boy";
         }
         //tag必须成对出现，也就是偶数个
-        Counter counter = Counter.builder("counter")
-            .tag("counter", "counter")
-            .description("counter")
-            .register(new SimpleMeterRegistry());
+
+        Counter counter = Metrics.counter("counter", "counter", "counter");
         counter.increment();
         counter.increment(2D);
         counter.increment(3);
         System.out.println(counter.count());
         System.out.println(counter.measure());
         //全局静态方法
-        Metrics.addRegistry(new SimpleMeterRegistry());
-        counter = Metrics.counter("counter", "counter", "counter");
-        counter.increment(10086D);
-        counter.increment(10087D);
-        System.out.println(counter.count());
-        System.out.println(counter.measure());
 
         return "hello world     name:" +name+"    para1:"+ para1 +"    para2:"+ para2;
     }
