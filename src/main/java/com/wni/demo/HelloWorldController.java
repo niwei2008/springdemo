@@ -42,7 +42,7 @@ public class HelloWorldController {
 
     }
 
-    @RequestMapping("/count")
+    @RequestMapping("/index/count")
     @ResponseBody
     public String count(){
         counter.increment();
@@ -56,7 +56,7 @@ public class HelloWorldController {
 
         return "counter.count："+ counter.count() +", counter.measure："+counter.measure();
     }
-    @RequestMapping("/gauge")
+    @RequestMapping("/index/gauge")
     @ResponseBody
     public String gauge(){
         atomicInteger.addAndGet(5);
