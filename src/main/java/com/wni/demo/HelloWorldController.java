@@ -25,6 +25,7 @@ public class HelloWorldController {
             .register(new SimpleMeterRegistry());
         counter.increment();
         counter.increment(2D);
+        counter.increment(3);
         System.out.println(counter.count());
         System.out.println(counter.measure());
         //全局静态方法
