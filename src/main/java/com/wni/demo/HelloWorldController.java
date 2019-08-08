@@ -19,6 +19,20 @@ public class HelloWorldController {
         Metrics.addRegistry(new SimpleMeterRegistry());
     }
 
+    @RequestMapping("/count")
+    @ResponseBody
+    public String count(){
+        Counter counter = Metrics.counter("counter", "counter", "counter");
+        counter.increment();
+        counter.increment(2D);
+        counter.increment(3);
+        System.out.println(counter.count());
+        System.out.println(counter.measure());
+        return "counter.count()："+ counter.count() +", counter.measure()："+counter.measure();
+    }
+
+
+
     @RequestMapping("/index/{name}")
     @ResponseBody
     public String index(@PathVariable String name, @RequestParam int para1,  @RequestParam int para2){
