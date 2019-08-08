@@ -3,6 +3,7 @@ package com.wni.demo;
 import io.prometheus.client.Counter;
 import io.prometheus.client.Gauge;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -18,19 +19,29 @@ public class PromeController2 {
         Gauge.build().name("myspringboot_prome2_inprogress_requests").help("Inprogress requests.").register();
 
     @RequestMapping("/count2")
-    void processRequest1() {
+    @ResponseBody
+    public String processRequest1() {
         requests.inc();
-        System.out.println(requests.get());
+
         // Your code here.
+
+        String result = "count2 result:" + requests.get();
+        System.out.println(result);
+        return result;
     }
 
     @RequestMapping("/gauge2")
-    void processRequest2() {
+    @ResponseBody
+    public String  processRequest2() {
         //inprogressRequests.set(200);
-        inprogressRequests.inc();
-        // Your code here.
         //inprogressRequests.dec();
-        System.out.println(inprogressRequests.get());
+        inprogressRequests.inc();
+
+        // Your code here.
+
+        String result = "gauge2 result:" + inprogressRequests.get();
+        System.out.println(result);
+        return result;
     }
 
 
