@@ -27,7 +27,7 @@ public class HelloWorldController {
             .tag("uri", "/api/users")
             .description("counter")
             .register(new SimpleMeterRegistry());
-        Metrics.addRegistry(new SimpleMeterRegistry());
+//        Metrics.addRegistry(new SimpleMeterRegistry());
 
 //        AtomicInteger atomicInteger = new AtomicInteger();
 //        Gauge gauge = Gauge.builder("gauge", atomicInteger, AtomicInteger::get)
