@@ -16,29 +16,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RestController
 public class HelloWorldController {
 
-    //private static PrometheusMeterRegistry registry = null;
-
     static Counter counter = null;
+
     static AtomicInteger atomicInteger = null;
     static Gauge gauge =null;
 
     static {
-
-
-        //registry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
-
-        Counter.builder("eureka.myspringboot.http.requests")
+         Counter.builder("eureka.myspringboot.http.requests")
             .tag("uri", "/api/users")
             .description("counter")
             .register(new SimpleMeterRegistry());
-        counter = Metrics.counter("eureka.myspringboot.http.requests", "uri", "/api/users");
+         counter = Metrics.counter("eureka.myspringboot.http.requests", "uri", "/api/users");
 
          Counter.builder("eureka.myspringboot.http.requests2")
             .tag("uri", "/api/users2")
             .description("counter")
             .register(new SimpleMeterRegistry());
 
-//        Metrics.addRegistry(new SimpleMeterRegistry());
 
          atomicInteger = new AtomicInteger();
          gauge = Gauge.builder("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get)
@@ -46,22 +40,11 @@ public class HelloWorldController {
             .description("gauge")
             .register(new SimpleMeterRegistry());
 
-
-
-        //        AtomicInteger atomicInteger = new AtomicInteger();
-//        Gauge gauge = Gauge.builder("gauge", atomicInteger, AtomicInteger::get)
-//            .tag("gauge", "gauge")
-//            .description("gauge")
-//            .register(new SimpleMeterRegistry());
-//        Metrics.addRegistry(new SimpleMeterRegistry());
-
     }
 
     @RequestMapping("/count")
     @ResponseBody
     public String count(){
-        //Counter counter = Metrics.counter("http.requests", "uri", "/api/users");
-        //Counter counter = registry.counter("counter", "counter", "counter");
         counter.increment();
         counter.increment(2D);
         counter.increment(3);
@@ -76,11 +59,6 @@ public class HelloWorldController {
     @RequestMapping("/gauge")
     @ResponseBody
     public String gauge(){
-//        AtomicInteger n = registry.gauge("numberGauge", new AtomicInteger(0));
-//        n.set(1);
-//        n.set(2);
-
-
         atomicInteger.addAndGet(5);
         System.out.println(gauge.value());
         System.out.println(gauge.measure());
@@ -88,7 +66,6 @@ public class HelloWorldController {
         System.out.println(gauge.value());
         System.out.println(gauge.measure());
 
-        //Metrics.addRegistry(new SimpleMeterRegistry());
         AtomicInteger data = Metrics.gauge("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get);
 
         return "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure() +", data:"+ data;
