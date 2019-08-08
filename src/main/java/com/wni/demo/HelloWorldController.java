@@ -23,12 +23,12 @@ public class HelloWorldController {
 
         registry = new PrometheusMeterRegistry(PrometheusConfig.DEFAULT);
 
-//        Counter counter = Counter.builder("counter")
-//            .tag("counter", "counter")
-//            .description("counter")
-//            .register(new SimpleMeterRegistry());
-//        Metrics.addRegistry(new SimpleMeterRegistry());
-//
+        Counter counter = Counter.builder("http.requests")
+            .tag("uri", "/api/users")
+            .description("counter")
+            .register(new SimpleMeterRegistry());
+        //Metrics.addRegistry(new SimpleMeterRegistry());
+
 //        AtomicInteger atomicInteger = new AtomicInteger();
 //        Gauge gauge = Gauge.builder("gauge", atomicInteger, AtomicInteger::get)
 //            .tag("gauge", "gauge")
@@ -41,8 +41,8 @@ public class HelloWorldController {
     @RequestMapping("/count")
     @ResponseBody
     public String count(){
-        //Counter counter = registry.counter("http.requests", "uri", "/api/users");
-        Counter counter = registry.counter("counter", "counter", "counter");
+        Counter counter = Metrics.counter("http.requests", "uri", "/api/users");
+        //Counter counter = registry.counter("counter", "counter", "counter");
         counter.increment();
         counter.increment(2D);
         counter.increment(3);
