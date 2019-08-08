@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class PromeController2 {
 
     static final Counter requests = Counter.build()
-        .name("eureka.myspringboot.prome2.requests_total").help("Total requests.").register();
+        .name("eureka_myspringboot_prome2_requests_total").help("Total requests.").register();
 
     static final Gauge inprogressRequests =
-        Gauge.build().name("eureka.myspringboot.prome2.inprogress_requests").help("Inprogress requests.").register();
+        Gauge.build().name("eureka_myspringboot_prome2_inprogress_requests").help("Inprogress requests.").register();
 
     @RequestMapping("/count2")
     void processRequest1() {
