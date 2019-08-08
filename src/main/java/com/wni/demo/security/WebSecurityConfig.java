@@ -21,8 +21,9 @@ import org.springframework.security.config.annotation.authentication.configurers
 /**
  * Created by niwei on 2019/7/23.
  */
-@Configuration
-@EnableWebSecurity
+//uncommnet below to open auth
+//@Configuration
+//@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer{
 
     @Autowired
