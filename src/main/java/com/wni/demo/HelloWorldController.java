@@ -41,13 +41,14 @@ public class HelloWorldController {
     @RequestMapping("/count")
     @ResponseBody
     public String count(){
-        Counter counter = registry.counter("http.requests", "uri", "/api/users");
+        //Counter counter = registry.counter("http.requests", "uri", "/api/users");
+        Counter counter = registry.counter("counter", "counter", "counter");
         counter.increment();
         counter.increment(2D);
         counter.increment(3);
         System.out.println(counter.count());
         System.out.println(counter.measure());
-        return "counter.count()："+ counter.count() +", counter.measure)："+counter.measure();
+        return "counter.count："+ counter.count() +", counter.measure："+counter.measure();
     }
     @RequestMapping("/gauge")
     @ResponseBody
