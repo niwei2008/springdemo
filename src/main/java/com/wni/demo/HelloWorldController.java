@@ -62,11 +62,24 @@ public class HelloWorldController {
     @RequestMapping("/gauge")
     @ResponseBody
     public String gauge(){
-        AtomicInteger n = registry.gauge("numberGauge", new AtomicInteger(0));
-        n.set(1);
-        n.set(2);
+//        AtomicInteger n = registry.gauge("numberGauge", new AtomicInteger(0));
+//        n.set(1);
+//        n.set(2);
 
-        return "gauge.value()："+ n+", gauge.measure()：";
+        AtomicInteger atomicInteger = new AtomicInteger();
+        Gauge gauge = Gauge.builder("gauge", atomicInteger, AtomicInteger::get)
+            .tag("gauge", "gauge")
+            .description("gauge")
+            .register(new SimpleMeterRegistry());
+        atomicInteger.addAndGet(5);
+        System.out.println(gauge.value());
+        System.out.println(gauge.measure());
+        atomicInteger.decrementAndGet();
+        System.out.println(gauge.value());
+        System.out.println(gauge.measure());
+        AtomicInteger data = Metrics.gauge("gauge", atomicInteger, AtomicInteger::get);
+
+        return "gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure() +", data:"+ data;
 
     }
 
