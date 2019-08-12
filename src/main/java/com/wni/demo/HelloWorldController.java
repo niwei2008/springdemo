@@ -3,6 +3,8 @@ package com.wni.demo;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.prometheus.PrometheusConfig;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Metrics;
@@ -15,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @RestController
 public class HelloWorldController {
+    private static Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
 
     static Counter counter = null;
 
@@ -48,8 +51,8 @@ public class HelloWorldController {
         counter.increment();
         counter.increment(2D);
         counter.increment(3);
-        System.out.println(counter.count());
-        System.out.println(counter.measure());
+        logger.info("" + counter.count());
+        logger.info("" + counter.measure());
 
         Counter counter2 = Metrics.counter("eureka.myspringboot.http.requests2", "uri", "/api/users22");
         counter2.increment();
@@ -63,8 +66,8 @@ public class HelloWorldController {
         System.out.println(gauge.value());
         System.out.println(gauge.measure());
         atomicInteger.decrementAndGet();
-        System.out.println(gauge.value());
-        System.out.println(gauge.measure());
+        logger.info("" + gauge.value());
+        logger.info("" + gauge.measure());
 
         AtomicInteger data = Metrics.gauge("eureka.myspringboot.mygauge", atomicInteger, AtomicInteger::get);
 
