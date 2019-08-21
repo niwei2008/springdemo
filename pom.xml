@@ -69,18 +69,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-hateoas</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.project13.maven</groupId>
-            <artifactId>git-commit-id-plugin</artifactId>
-            <version>3.0.1</version>
-            <type>maven-plugin</type>
-        </dependency>
-
-        <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
             <version>1.1.5</version>
@@ -165,10 +153,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-    <scm>
-        <connection>scm:git:git@gitlab.feikongbao.cn:ops/jira_trigger_adaptor.git</connection>
-    </scm>
 
 	<distributionManagement>
 		<repository>
