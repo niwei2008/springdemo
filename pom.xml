@@ -131,9 +131,19 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>2.7</version>
 				</plugin>
+
+				<plugin>
+					<groupId>pl.project13.maven</groupId>
+					<artifactId>git-commit-id-plugin</artifactId>
+					<version>3.0.1</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
+
+    <scm>
+        <connection>scm:git:git@gitlab.feikongbao.cn:ops/jira_trigger_adaptor.git</connection>
+    </scm>
 
 	<distributionManagement>
 		<repository>
