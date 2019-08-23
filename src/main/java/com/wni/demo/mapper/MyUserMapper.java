@@ -1,4 +1,4 @@
-package com.wni.demo;
+package com.wni.demo.mapper;
 
 import com.wni.demo.model.UserObject;
 import org.apache.ibatis.annotations.Mapper;
@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
  * Created by niwei on 2019/8/23.
  */
 @Mapper
-public interface UserMapper {
+public interface MyUserMapper {
 
 
 

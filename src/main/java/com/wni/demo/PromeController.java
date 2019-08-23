@@ -1,5 +1,6 @@
 package com.wni.demo;
 
+import com.wni.demo.mapper.MyUserMapper;
 import com.wni.demo.mapper.UserObjectMapper;
 import com.wni.demo.model.UserObject;
 import io.micrometer.core.instrument.Counter;
@@ -40,7 +41,7 @@ public class PromeController {
     }
 
     @Autowired
-    private UserMapper UserMapper;
+    private MyUserMapper myUserMapper;
 
     @RequestMapping("/count")
     @ResponseBody
@@ -49,7 +50,7 @@ public class PromeController {
         String result ="counter.count："+ counter.count() +", counter.measure："+counter.measure();
         System.out.println(result);
 
-        UserObject user = UserMapper.getOne(10500L);
+        UserObject user = myUserMapper.getOne(10500L);
         System.out.println(user.getUserName());
         System.out.println(user.getUserEmail());
         return result;

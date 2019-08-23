@@ -1,5 +1,6 @@
 package com.wni.demo;
 
+import com.wni.demo.mapper.MyUserMapper;
 import com.wni.demo.mapper.UserObjectMapper;
 import com.wni.demo.model.UserObject;
 import org.junit.Test;
@@ -15,10 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 //@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
-public class UserMapperTest {
+public class MyUserMapperTest {
 
     @Autowired
-    private UserMapper UserMapper;
+    private MyUserMapper myUserMapper;
 
     @Autowired
     private UserObjectMapper userObjectMapper;
@@ -27,7 +28,7 @@ public class UserMapperTest {
     public void testQuery() throws Exception {
         System.out.println("\n####################testQuery###################");
 
-        UserObject user = UserMapper.getOne(10500L);
+        UserObject user = myUserMapper.getOne(10500L);
         System.out.println(user.getUserName());
         System.out.println(user.getUserEmail());
 
