@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.wni</groupId>
 	<artifactId>demo1</artifactId>
-	<version>0.0.6-SNAPSHOT</version>
+	<version>0.0.6</version>
 	<name>myspringboot</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -166,7 +166,8 @@
 
     <scm>
         <developerConnection>scm:git:http://gitlab.feikongbao.cn/ops/jira_trigger_adaptor.git</developerConnection>
-    </scm>
+      <tag>demo1-0.0.6</tag>
+  </scm>
 
 	<distributionManagement>
 		<repository>
