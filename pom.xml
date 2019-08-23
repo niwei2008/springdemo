@@ -149,7 +149,6 @@
 				    <configuration>
 					    <username>niwei</username>
 					    <password>Youdu123457</password>
-                        <goals>clean deploy site-deploy -Dmaven.test.skip=true</goals>
 				    </configuration>
 			    </plugin>
 
