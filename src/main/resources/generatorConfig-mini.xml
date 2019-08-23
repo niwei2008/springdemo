@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+       <context id="MySql">
+              <jdbcConnection
+                      driverClass="com.mysql.jdbc.Driver"
+                      connectionURL="jdbc:mysql://dev.feikongbao.cn:3306/test_company"
+                      userId="yodoo"
+                      password="yodoo123"/>
+              <javaModelGenerator targetPackage="com.example.mybat" targetProject="src/main/java"></javaModelGenerator>
+              <table tableName="user_object"></table>
+       </context>
+</generatorConfiguration>
