@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UserDao  {
 
-    @Autowired
-    private UserObjectMapper userObjectMapper;
-
-    public UserObject selectByPrimaryKey(int id) {
-        return userObjectMapper.selectByPrimaryKey(id);
-    }
+//    @Autowired
+//    private UserObjectMapper userObjectMapper;
+//
+//    public UserObject selectByPrimaryKey(int id) {
+//        return userObjectMapper.selectByPrimaryKey(id);
+//    }
 }
