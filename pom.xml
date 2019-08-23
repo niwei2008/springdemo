@@ -156,7 +156,6 @@
 				    <configuration>
 					    <username>niwei</username>
 					    <password>Youdu123457</password>
-					    <goals>-f pom.xml deploy</goals>
 				    </configuration>
 			    </plugin>
 
@@ -172,8 +171,6 @@
         <developerConnection>scm:git:http://gitlab.feikongbao.cn/ops/jira_trigger_adaptor.git</developerConnection>
         <!--需要打包项目的git地址-->
         <connection>scm:git:http://gitlab.feikongbao.cn/ops/jira_trigger_adaptor.git</connection>
-
-        <tag>HEAD</tag>
     </scm>
 
 	<distributionManagement>
