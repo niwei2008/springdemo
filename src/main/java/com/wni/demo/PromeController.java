@@ -1,5 +1,6 @@
 package com.wni.demo;
 
+import com.wni.demo.dao.UserDao;
 import com.wni.demo.mapper.UserObjectMapper;
 import com.wni.demo.model.UserObject;
 import io.micrometer.core.instrument.Counter;
@@ -55,8 +56,8 @@ public class PromeController {
         return result;
     }
 
-//    @Autowired
-//    private UserObjectMapper userObjectMapper;
+    @Autowired
+    private UserObjectMapper userObjectMapper;
 
     @RequestMapping("/gauge")
     @ResponseBody
@@ -71,9 +72,9 @@ public class PromeController {
         result = "end   gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure();
         System.out.println(result);
 
-//        UserObject user = userObjectMapper.selectByPrimaryKey(10500);
-//        System.out.println(user.getUserName());
-//        System.out.println(user.getUserEmail());
+        UserObject user = userObjectMapper.selectByPrimaryKey(10500);
+        System.out.println(user.getUserName());
+        System.out.println(user.getUserEmail());
         return result;
 
     }

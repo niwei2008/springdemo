@@ -33,7 +33,7 @@
 
 
         <!-- 生成mapper xml对应dao接口，放到com.songguoliang.springboot.mapper包下-->
-        <javaClientGenerator targetPackage="com.wni.demo.mapper" targetProject="src/main/java" type="XMLMAPPER"></javaClientGenerator>
+        <javaClientGenerator targetPackage="com.wni.demo.mapper" targetProject="src/main/java" type="XMLMAPPER"/>
 
         <!-- table标签可以有多个，至少一个，tableName指定表名，可以使用_和%通配符 -->
         <table tableName="user_object">
