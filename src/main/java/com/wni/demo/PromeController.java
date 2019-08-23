@@ -1,9 +1,12 @@
 package com.wni.demo;
 
+import com.wni.demo.mapper.UserObjectMapper;
+import com.wni.demo.model.UserObject;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.Metrics;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,14 +39,24 @@ public class PromeController {
 
     }
 
+    @Autowired
+    private UserMapper UserMapper;
+
     @RequestMapping("/count")
     @ResponseBody
     public String count(){
         counter.increment();
         String result ="counter.count："+ counter.count() +", counter.measure："+counter.measure();
         System.out.println(result);
+
+        UserObject user = UserMapper.getOne(10500L);
+        System.out.println(user.getUserName());
+        System.out.println(user.getUserEmail());
         return result;
     }
+
+//    @Autowired
+//    private UserObjectMapper userObjectMapper;
 
     @RequestMapping("/gauge")
     @ResponseBody
@@ -57,6 +70,10 @@ public class PromeController {
 
         result = "end   gauge.value："+ gauge.value()+", gauge.measure：" + gauge.measure();
         System.out.println(result);
+
+//        UserObject user = userObjectMapper.selectByPrimaryKey(10500);
+//        System.out.println(user.getUserName());
+//        System.out.println(user.getUserEmail());
         return result;
 
     }
