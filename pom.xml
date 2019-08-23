@@ -153,7 +153,7 @@
 	</build>
 
   <scm>
-      <developerConnection>scm:git:http://gitlab.feikongbao.cn/ops/jira_trigger_adaptor.git</developerConnection>
+      <developerConnection>scm:git:git@gitlab.feikongbao.cn:ops/jira_trigger_adaptor.git</developerConnection>
       <tag>HEAD</tag>
   </scm>
 
