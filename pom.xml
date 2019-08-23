@@ -156,7 +156,7 @@
 				    <configuration>
 					    <username>niwei</username>
 					    <password>Youdu123457</password>
-                        <goals>clean git-commit-id:revision package -Dmaven.test.skip=true</goals>
+                        <goals>clean deploy -Dmaven.test.skip=true</goals>
 				    </configuration>
 			    </plugin>
 
@@ -165,15 +165,8 @@
 	</build>
 
     <scm>
-        <!--release包需要放入的nexus或者其他maven release包的仓库url地址-->
-        <url>http://nexus.feikongbao.cn:8081/#browse/browse:maven-releases</url>
-        <!--connection, developerConnection: 都是连接字符串，其中后者是具有write权限的scm连接 -->
-        <!--需要打包项目的git地址-->
         <developerConnection>scm:git:http://gitlab.feikongbao.cn/ops/jira_trigger_adaptor.git</developerConnection>
-        <!--需要打包项目的git地址-->
-        <connection>scm:git:http://gitlab.feikongbao.cn/ops/jira_trigger_adaptor.git</connection>
-      <tag>HEAD</tag>
-  </scm>
+    </scm>
 
 	<distributionManagement>
 		<repository>
