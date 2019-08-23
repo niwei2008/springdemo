@@ -1,5 +1,6 @@
 package com.wni.demo;
 
+import com.wni.demo.mapper.UserObjectMapper;
 import com.wni.demo.model.UserObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,14 +20,30 @@ public class UserMapperTest {
     @Autowired
     private UserMapper UserMapper;
 
+    @Autowired
+    private UserObjectMapper userObjectMapper;
+
     @Test
     public void testQuery() throws Exception {
-        System.out.println("####################test###################3");
+        System.out.println("\n####################testQuery###################");
 
         UserObject user = UserMapper.getOne(10500L);
         System.out.println(user.getUserName());
         System.out.println(user.getUserEmail());
 
     }
+
+    @Test
+    public void testQuery2() throws Exception {
+        System.out.println("\n####################testQuery2###################");
+
+        UserObject user = userObjectMapper.selectByPrimaryKey(10500);
+        System.out.println(user.getUserName());
+        System.out.println(user.getUserEmail());
+    }
+
+
+
+
 
 }

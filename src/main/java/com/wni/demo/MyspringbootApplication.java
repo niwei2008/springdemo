@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 //@EnableEurekaClient
 
+//@MapperScan("com.wni.demo.mapper")
 public class MyspringbootApplication {
 
 	public static void main(String[] args) {
