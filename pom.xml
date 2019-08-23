@@ -156,6 +156,7 @@
 				    <configuration>
 					    <username>niwei</username>
 					    <password>Youdu123457</password>
+                        <goals>clean git-commit-id:revision package -Dmaven.test.skip=true</goals>
 				    </configuration>
 			    </plugin>
 
