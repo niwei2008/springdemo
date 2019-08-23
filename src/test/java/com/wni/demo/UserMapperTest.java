@@ -16,15 +16,17 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class UserMapperTest {
 
-    //    @Autowired
-    //    private UserMapper UserMapper;
+    @Autowired
+    private UserMapper UserMapper;
 
     @Test
     public void testQuery() throws Exception {
         System.out.println("####################test###################3");
-        //        UserObject user = UserMapper.getOne(10500L);
-        //        System.out.println(user.getUserName());
-        //        System.out.println(user.getUserEmail());
+
+        UserObject user = UserMapper.getOne(10500L);
+        System.out.println(user.getUserName());
+        System.out.println(user.getUserEmail());
+
     }
 
 }
