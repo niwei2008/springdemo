@@ -17,6 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by niwei on 2019/8/8.
  */
+@RequestMapping("/demo/api")
 @RestController
 public class PromeController {
 
